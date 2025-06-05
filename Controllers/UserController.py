@@ -41,9 +41,4 @@ class UserController:
     #########################################
     def delete_user(self, user):
         user_repository = UserRepository()
-       
         user_repository.delete_user(user)
-        
-        
-
-    #

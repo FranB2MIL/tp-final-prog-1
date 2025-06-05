@@ -61,6 +61,9 @@ class UserView:
         user_controller = UserController()
         user_for_delete = UserForDelete(username, password)
         validation = user_controller.login(user_for_delete)
-        if validation == True:
+        if validation[0] == True:
             user_controller.delete_user(user_for_delete)
+        else:
+            print(" Usuario o contraseña incorrecta ".center(50, "!"))
+            input(" Presione enter para continuar ".center(50, "!"))
         

@@ -38,7 +38,7 @@ class MainMenu:
             ##################################################################
             elif option == "5":
               user_view = UserView()
-              validation = user_view.delete_user_menu()
+              user_view.delete_user_menu()
 
             else:
                 print(" Opcion incorrecta ".center(50, "!"))

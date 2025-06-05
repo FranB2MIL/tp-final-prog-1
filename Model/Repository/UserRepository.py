@@ -51,21 +51,23 @@ class UserRepository:
             file.write(f"{user.username},{user.password},{user.email},{user.name},{user.surname},1\n")
     ########################################################################################################
     def update_user(self, user, new_state=1):
-        
+        lines = []
         with open(self.file_path, "r") as file:
             lines = file.readlines()
         with open(self.file_path, "w") as file:
             for line in lines:
                 user_data = line.strip().split(",")
+                
                 if (len(user_data) == 6 and user_data[0] == user.username and user_data[1] == user.password):
                     if new_state == 0:
-                        line = f"{user.username},{user_data[1]},{user_data[2]},{user_data[3]},{user_data[4]},{new_state}\n"
-                        #{contact_data[1]},{contact_data[2]},{contact_data[3]},{contact_data[4]},{new_state}\n"
+                        line = f"{user.username},{user_data[1]},{user_data[2]},{user_data[3]},{user_data[4]},{new_state}\n" 
                     else:
                         line = f"{user.username},{user.password},{user.email},{user.name},{user.surname},{new_state}\n"
                 file.write(line)
 
     def delete_user(self, user):
-        user.update_user(user, 0)
+        self.update_user(user, 0)
+
+    
         
     
